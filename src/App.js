@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from "react-redux";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import List from "./pages/List";
+import Login from "./pages/Login";
 
 function App() {
+  const {
+    trelloList: { cards },
+  } = useSelector((state) => state);
+  console.log(cards);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        {cards.map((card) => (
+          <Route
+            key={card.id}
+            path={`/lists/${card.title.toLowerCase()}`}
+            element={<List {...card} />}
+          />
+        ))}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
