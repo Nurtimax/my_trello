@@ -16,6 +16,7 @@ const TrelloCard = ({ title = "Todo", children }) => {
     [`${title.toLowerCase()}_${children.toLowerCase()}`]: items,
   } = useSelector((state) => state.trello);
 
+
   const dispatch = useDispatch();
 
   const showFiledHandler = () => {
@@ -44,7 +45,12 @@ const TrelloCard = ({ title = "Todo", children }) => {
       <Card className="trello_card">
         <div className="trello_card_header">{children}</div>
         {items?.map((item) => (
-          <TrelloCardList key={item.id} {...item} />
+          <TrelloCardList
+            key={item.id}
+            {...item}
+            editTitle={title}
+            editSlice={children}
+          />
         ))}
         {!openFiled ? (
           <>

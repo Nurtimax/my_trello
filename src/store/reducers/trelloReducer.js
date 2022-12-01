@@ -13,6 +13,7 @@ const trelloReducer = createSlice({
   initialState,
   reducers: {
     addTrelloItems(state, { payload }) {
+      // state[`${payload.key.join("_").toLowerCase()}`] = payload.newArr;
       state[`${payload.key[1].toLowerCase()}_${payload.key[0].toLowerCase()}`] =
         payload.newArr;
     },

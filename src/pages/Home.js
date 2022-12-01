@@ -7,7 +7,6 @@ import { getDataTrelloListHandler } from "../store/reducers/trelloListReducer";
 
 const Home = () => {
   const { cards } = useSelector((state) => state.trelloList);
-  console.log(cards);
 
   const dispatch = useDispatch();
 

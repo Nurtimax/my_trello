@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer } from "react";
 import { BsPlusLg } from "react-icons/bs";
 
 const initialState = {

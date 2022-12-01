@@ -392,7 +392,7 @@ const TrelloCardStyled = styled.div`
   }
   & .trello_card_header {
     font-size: 1.5rem;
-    padding: .5rem 0;
+    padding: 0.5rem 0;
   }
   & .button {
     width: 100%;
@@ -502,6 +502,147 @@ const ListsCardStyled = styled.div`
   }
 `;
 
+const SignupStyled = styled.div`
+  * {
+    box-sizing: border-box;
+  }
+  & button,
+  input {
+    border: 0;
+    width: 100%;
+    height: 60px;
+    background: transparent;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+  }
+  & .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 1rem;
+    margin: 0 auto;
+  }
+  & .logo h1:last-child {
+    font-size: 5rem;
+    margin: 0;
+    padding: 0;
+    color: #253858;
+  }
+  & .h1 {
+    color: #0079bf;
+    font-size: 5rem;
+    padding: 0;
+    margin: 0;
+  }
+  & .clouds {
+    position: fixed;
+    top: 30%;
+    left: 0;
+    width: 3000px;
+    height: 1500px;
+    translate: 0% -50%;
+    animation: clouds 15s infinite linear;
+  }
+  & .signup {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    padding: 100px 90px;
+    background: #111820;
+  }
+
+  & .signup h2 {
+    margin: 0 0 6px;
+    color: rgb(255 255 255 / 96%);
+  }
+  & .signup h3 {
+    margin: 0 0 30px;
+    color: rgb(255 255 255 / 96%);
+  }
+
+  & .form {
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  & .textbox {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  & .textbox span {
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+    left: 0;
+    font-size: 22px;
+    color: rgb(255 255 255 / 40%);
+  }
+  & .textbox input {
+    padding: 0 24px 0 36px;
+    border-bottom: 2px solid #2b3442;
+    color: rgb(255 255 255 / 96%);
+    height: 72px;
+  }
+
+  & input:focus {
+    border-color: #216ce7;
+  }
+  & :is(input:focus, input:valid) ~ span {
+    color: rgb(255 255 255 / 96%);
+  }
+
+  & .textbox label {
+    position: absolute;
+    top: 50%;
+    left: 36px;
+    translate: 0 -50%;
+    color: rgb(255 255 255 / 40%);
+    transition: 0.4s;
+  }
+
+  & :is(input:focus, input:valid) ~ label {
+    translate: -40px -40px;
+    scale: 0.875;
+  }
+
+  & input:focus ~ label {
+    color: #216ce7;
+  }
+  & button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 0 24px;
+    border-radius: 6px;
+    background: #216ce7;
+    color: #f9f9f9;
+    border: 0;
+    font-family: inherit;
+    font-weight: 600;
+  }
+  & .signup p {
+    color: #778395;
+  }
+  & .signup p a {
+    color: #216ce7;
+  }
+
+  @keyframes clouds {
+    100% {
+      translate: -50wv -55%;
+      scale: 1 1.1;
+    }
+  }
+`;
+
 export {
   Container,
   LoginStyled,
@@ -519,5 +660,6 @@ export {
   TrelloCardListMenuStyled,
   ListStyled,
   ListCardStyled,
-  ListsCardStyled
+  ListsCardStyled,
+  SignupStyled,
 };

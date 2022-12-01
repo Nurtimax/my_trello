@@ -37,7 +37,7 @@ const cardListReducer = (state, { type, payload }) => {
   }
 };
 
-const TrelloCardList = ({ title, id }) => {
+const TrelloCardList = ({ title, id, editTitle, editSlice }) => {
   const [viewEdit, dispatchViewEdit] = useReducer(cardListReducer, {
     ...initialState,
     title,
@@ -61,14 +61,17 @@ const TrelloCardList = ({ title, id }) => {
 
   const saveEditCardHandler = async () => {
     try {
-      const response = await axios.put(`${BASE_URL}/card/${id}.json`, {
-        title: viewEdit.title,
-      });
+      const response = await axios.put(
+        `${BASE_URL}/card_${editTitle.toLowerCase()}_${editSlice.toLowerCase()}/${id}.json`,
+        {
+          title: viewEdit.title,
+        }
+      );
       console.log(response);
     } catch (error) {
       console.log(error);
     }
-    dispatch(getDataHandler());
+    dispatch(getDataHandler(editTitle, editSlice));
     editModalHandler();
   };
 
@@ -95,7 +98,12 @@ const TrelloCardList = ({ title, id }) => {
       )}
 
       {viewEdit.showModal && (
-        <TrelloCardListMenu id={id} editCard={editModalHandler} />
+        <TrelloCardListMenu
+          id={id}
+          editCard={editModalHandler}
+          title={editTitle}
+          titleSlice={editSlice}
+        />
       )}
     </TrelloCardListStyled>
   );

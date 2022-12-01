@@ -3,7 +3,6 @@ import { Container, ListStyled } from "../assets/Global";
 import TrelloCard from "../components/trello_card/TrelloCard";
 
 const List = ({ title, backgroundImage }) => {
-  console.log(title, "title list");
   return (
     <ListStyled image={backgroundImage}>
       <Container>
