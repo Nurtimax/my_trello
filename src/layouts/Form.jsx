@@ -18,11 +18,11 @@ const PASSWORD_REGEX =
 const Form = () => {
   const [formValue, dispatchValue] = useReducer(valueReducer, initialState);
 
-  const navigation = useNavigate()
+  const navigation = useNavigate();
 
   const dispatch = useDispatch();
 
-  const { passwordView } = useSelector((state) => state.login);
+  const { passwordView, users } = useSelector((state) => state.login);
 
   const changeValueInputHandler = (type) => {
     return (e) => {
@@ -43,17 +43,22 @@ const Form = () => {
         })
       );
     }
-    for (const key in initState) {
-      if (String(initState[key]) !== String(formValue[key])) {
-        return dispatch(
-          loginHandler({
-            title: "ERROR",
-            message: "Please fill in the correct field email or password",
-          })
-        );
+    for (let index = 0; index < users.length; index++) {
+      const element = users[index];
+      console.log(element);
+      if (
+        String(element.email) === String(formValue.email) &&
+        String(element.password) === String(formValue.password)
+      ) {
+        return navigation("/home");
       }
+      return dispatch(
+        loginHandler({
+          title: "ERROR",
+          message: "Email and password is not true",
+        })
+      );
     }
-    navigation('/home')
   };
 
   const showPasswordHandler = () => {

@@ -7,7 +7,7 @@ import {
 } from "../../assets/Global";
 import { background, backgroundColors } from "../../data";
 import { chooseColor, chooseImage } from "../../store/reducers/modalReducer";
-import { sendDataTrelloListHandler } from "../../store/reducers/trelloListReducer";
+import { addTrelloCardList } from "../../store/reducers/signupReducer";
 import AddListModalForm from "./AddListModalForm";
 
 const AddListModal = () => {
@@ -27,9 +27,11 @@ const AddListModal = () => {
 
   const sendDataHandler = (data) => {
     dispatch(
-      sendDataTrelloListHandler({
-        backgroundImage: key || backgroundShow,
+      addTrelloCardList({
+        id: Math.random().toString(),
+        backgroundImage: backgroundShow || key,
         title: data,
+        page: [{ title: data, id: Math.random().toString(), cards: [] }],
       })
     );
   };
@@ -44,7 +46,7 @@ const AddListModal = () => {
             backgroundShow={backgroundShow}
           ></BackgroundColorChoose>
         ) : (
-          <img src={key} alt="bg" />
+          <img src={key || backgroundShow} alt="bg" />
         )}
       </figure>
       <figure className="background_styled">

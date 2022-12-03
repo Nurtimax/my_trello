@@ -1,58 +1,117 @@
-import axios from "axios";
-import React, { useEffect } from "react";
+import { useReducer } from "react";
 import { BsPlusLg } from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux";
+import { GoKebabHorizontal } from "react-icons/go";
+import { useDispatch } from "react-redux";
 import { TrelloCardStyled } from "../../assets/Global";
-import { getDataHandler, showFiled } from "../../store/reducers/trelloReducer";
-import { BASE_URL } from "../../utils/constants/general";
+import { addList } from "../../store/reducers/signupReducer";
 import Card from "../UI/card/Card";
 import TrelloCardField from "./TrelloCardField";
 import TrelloCardList from "./TrelloCardList";
-import { toast } from "react-toastify";
 
-const TrelloCard = ({ title = "Todo", children }) => {
-  const {
-    openFiled,
-    [`${title.toLowerCase()}_${children.toLowerCase()}`]: items,
-  } = useSelector((state) => state.trello);
+const initialStateByCard = {
+  modal: false,
+  newList: "",
+  addListModal: false,
+};
 
+const showCardFieldReducer = (state, { type, payload }) => {
+  if (type === "TOGGLE") {
+    return {
+      ...state,
+      modal: !state.modal,
+    };
+  }
+  if (type === "LIST") {
+    return {
+      ...state,
+      newList: payload,
+    };
+  }
+  if (type === "RESET") {
+    return {
+      ...state,
+      newList: "",
+    };
+  }
+  if (type === "LISTMODAL") {
+    return {
+      ...state,
+      addListModal: !state.addListModal,
+    };
+  }
+  return state;
+};
 
+const TrelloCard = ({ title = "Todo", children, id, cards, trelloId }) => {
   const dispatch = useDispatch();
 
+  const [isShowModal, dispatchIsShowModal] = useReducer(
+    showCardFieldReducer,
+    initialStateByCard
+  );
+
   const showFiledHandler = () => {
-    dispatch(showFiled());
+    dispatchIsShowModal({ type: "TOGGLE" });
   };
 
-  const postCardData = async (data) => {
-    try {
-      const response = await axios.post(
-        `${BASE_URL}/card_${title.toLowerCase()}_${children.toLowerCase()}.json`,
-        data
-      );
-      toast.success(`Succes ${response.status}`);
-    } catch (error) {
-      toast.error(error.message);
-    }
-    dispatch(getDataHandler(title, children));
+  const addListCardHandler = () => {
+    dispatch(
+      addList({
+        id: Math.random().toString(),
+        title: isShowModal.newList,
+        cards: [],
+        trelloId,
+      })
+    );
+    dispatchIsShowModal({ type: "LISTMODAL" });
+    dispatchIsShowModal({ type: "RESET" });
   };
 
-  useEffect(() => {
-    dispatch(getDataHandler(title, children));
-  }, [dispatch, title, children]);
+  const changeInputValueHandler = (type) => {
+    return (e) => {
+      dispatchIsShowModal({ type, payload: e.target.value });
+    };
+  };
 
   return (
     <TrelloCardStyled>
+      {isShowModal.addListModal && (
+        <div className="add_list_modal">
+          <label htmlFor="name">
+            List Name:{" "}
+            <input
+              type="text"
+              value={isShowModal.newList}
+              onChange={changeInputValueHandler("LIST")}
+            />
+          </label>{" "}
+          <button onClick={addListCardHandler}>
+            {" "}
+            <BsPlusLg /> Add List
+          </button>
+        </div>
+      )}
       <Card className="trello_card">
-        <div className="trello_card_header">{children}</div>
-        {items?.map((item) => (
+        <div className="trello_card_header">
+          {children}{" "}
+          <button
+            className="button"
+            onClick={() => dispatchIsShowModal({ type: "LISTMODAL" })}
+          >
+            <GoKebabHorizontal />
+          </button>
+        </div>
+        {cards?.map((item) => (
           <TrelloCardList
             key={item.id}
             {...item}
             editTitle={title}
             editSlice={children}
+            trelloId={trelloId}
+            pageId={id}
           />
         ))}
-        {!openFiled ? (
+        {!isShowModal.modal ? (
           <>
             <button className="button" onClick={showFiledHandler}>
               <BsPlusLg /> Add card
@@ -60,7 +119,11 @@ const TrelloCard = ({ title = "Todo", children }) => {
           </>
         ) : (
           <>
-            <TrelloCardField postData={postCardData} />
+            <TrelloCardField
+              id={id}
+              trelloId={trelloId}
+              showFile={showFiledHandler}
+            />
           </>
         )}
       </Card>

@@ -377,11 +377,16 @@ const BackgroundColorsStyled = styled.div`
 
 const TrelloCardStyled = styled.div`
   & {
-    width: 20%;
+    width: 25%;
     padding: 0.7rem;
     /* margin: 2rem 0; */
     background: #f5f5f5;
     border-radius: 3px;
+    position: relative;
+  }
+  & .error {
+    border-color: red;
+    color: red;
   }
   & .trello_card {
     width: 100%;
@@ -393,6 +398,11 @@ const TrelloCardStyled = styled.div`
   & .trello_card_header {
     font-size: 1.5rem;
     padding: 0.5rem 0;
+  }
+  & .buttons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
   & .button {
     width: 100%;
@@ -413,12 +423,43 @@ const TrelloCardStyled = styled.div`
     font-size: 1rem;
     width: 100%;
   }
+  & .add_list_modal {
+    width: 90%;
+    height: 10rem;
+    background: #1a5c6c;
+    position: absolute;
+    z-index: 10;
+    left: 98%;
+    top: 20%;
+    border-radius: 3px;
+    box-shadow: #00000033 0 1px 2px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  & .add_list_modal input {
+    width: 100%;
+    height: 2rem;
+    outline: none;
+    padding: 0 3px;
+    font-size: 1rem;
+  }
+  & .add_list_modal button {
+    width: 100%;
+    height: 2rem;
+    outline: none;
+    padding: 0 3px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 3%;
+  }
 `;
 
 const TrelloCardListStyled = styled.div`
   & {
     width: 100%;
-    height: 100%;
     padding: 0.5rem 0;
     background: #e8efed;
     display: flex;
@@ -467,16 +508,21 @@ const TrelloCardListMenuStyled = styled.div`
 
 const ListStyled = styled.div`
   & {
+    background: ${({ bgColor }) => bgColor};
     background-image: url(${({ image }) => image});
     width: 100%;
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: auto;
+    padding: 1rem;
   }
   & .list_card {
     display: flex;
     gap: 5rem;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
   }
 `;
 
@@ -487,6 +533,7 @@ const ListCardStyled = styled.div`
     background: #f5f5f5;
     border-radius: 5px;
     padding: 0.5rem;
+    background: ${({bgColor}) => bgColor};
     background-image: url(${({ image }) => image});
     background-repeat: no-repeat;
     background-size: cover;

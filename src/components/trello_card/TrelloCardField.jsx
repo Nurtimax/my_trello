@@ -1,45 +1,58 @@
-import React, { useReducer } from "react";
+import { useForm } from "react-hook-form";
 import { BsPlusLg } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { addCard } from "../../store/reducers/signupReducer";
 
-const initialState = {
-  value: "",
-};
+const TrelloCardField = ({ id, trelloId, showFile }) => {
+  const dispatch = useDispatch();
 
-const reducer = (state, { type, payload }) => {
-  if (type === "TITLE") {
-    return {
-      value: payload,
-    };
-  }
-  if (type === "RESET") {
-    return {
-      value: "",
-    };
-  }
-  return state;
-};
-
-const TrelloCardField = ({ postData }) => {
-  const [cardValue, dispatch] = useReducer(reducer, initialState);
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    postData({ title: cardValue.value });
-    dispatch({ type: "RESET" });
+  const submitHandler = (values, action) => {
+    if (values.title.trim().length > 3) {
+      dispatch(
+        addCard({
+          pageId: id,
+          title: { ...values, id: Math.random().toString() },
+          trelloId,
+        })
+      );
+      return reset();
+    }
   };
 
+  const closeTrelloCardFieldHandler = () => {
+    showFile();
+  };
+
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm();
+
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={handleSubmit(submitHandler)}>
       <textarea
-        value={cardValue.value}
-        onChange={(e) => dispatch({ type: "TITLE", payload: e.target.value })}
         rows="4"
-        className="textarea"
+        className={`textarea ${errors.title && 'error' }`}
         placeholder="Enter a title for this card..."
+        {...register("title", {
+          minLength: 4,
+        })}
       />
-      <button className="button">
-        <BsPlusLg /> Add list
-      </button>
+      {errors.title && <p className="error">Please enter more than 3 character</p>}
+      <div className="buttons">
+        <button className="button">
+          <BsPlusLg /> Add card
+        </button>
+        <button
+          className="button"
+          type="button"
+          onClick={closeTrelloCardFieldHandler}
+        >
+          close
+        </button>
+      </div>
     </form>
   );
 };

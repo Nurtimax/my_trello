@@ -11,43 +11,9 @@ import { FaTrello } from "react-icons/fa";
 import bgImage from "../assets/Twilight-0.7s-1680px.svg";
 import { useDispatch } from "react-redux";
 import { postUserDataHandler } from "../store/reducers/signupReducer";
+import { formReducer, initialFormState } from "../utils/valueReducer";
 
-const initialFormState = {
-  name: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
-};
 
-const formReducer = (state, { type, payload }) => {
-  switch (type) {
-    case "NAME":
-      return {
-        ...state,
-        name: payload,
-      };
-    case "EMAIL":
-      return {
-        ...state,
-        email: payload,
-      };
-    case "PASSWORD":
-      return {
-        ...state,
-        password: payload,
-      };
-    case "CONFIRMPASSWORD":
-      return {
-        ...state,
-        confirmPassword: payload,
-      };
-    case "RESET":
-      return initialFormState;
-
-    default:
-      return state;
-  }
-};
 
 const Signup = () => {
   const [formState, dispatchFormState] = useReducer(

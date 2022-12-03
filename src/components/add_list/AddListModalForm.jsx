@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AddListModalFormStyled } from "../../assets/Global";
+import { showModal } from "../../store/reducers/modalReducer";
 import Button from "../UI/button/Button";
 import Input from "../UI/input/Input";
 
@@ -9,10 +11,13 @@ const AddListModalForm = ({ sendData }) => {
 
   const navigated = useNavigate();
 
+  const dispatch = useDispatch()
+
   const submitHandler = (e) => {
     e.preventDefault();
     if (cardValue.trim().length !== 0) {
       sendData(cardValue);
+      dispatch(showModal())
       return navigated(`/lists/${cardValue.toLowerCase()}`);
     }
   };

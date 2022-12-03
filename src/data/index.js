@@ -1,9 +1,6 @@
-import backgroundImage from "../assets/background_image/pexels-daniel-absi-952670.jpg";
 import backgroundImage2 from "../assets/background_image/pexels-felix-mittermeier-956999.jpg";
 import backgroundImage3 from "../assets/background_image/pexels-magda-ehlers-960137.jpg";
-import backgroundImage4 from "../assets/background_image/pexels-miguel-á-padriñán-19670.jpg";
 import backgroundImage5 from "../assets/background_image/pexels-moose-photos-1037992.jpg";
-import backgroundImage6 from "../assets/background_image/pexels-photomix-company-96627.jpg";
 import backgroundImage7 from "../assets/background_image/pexels-pixabay-235985.jpg";
 import backgroundImage8 from "../assets/background_image/pexels-pixabay-259915.jpg";
 import backgroundImage9 from "../assets/background_image/pexels-pixabay-268533.jpg";
@@ -11,13 +8,8 @@ import backgroundImage10 from "../assets/background_image/pexels-pixabay-531880.
 import backgroundImage11 from "../assets/background_image/pexels-riccardo-bertolo-4245826.jpg";
 import backgroundImage12 from "../assets/background_image/pexels-shonejai-1227511.jpg";
 import backgroundImage13 from "../assets/background_image/pexels-steve-johnson-1269968.jpg";
-import backgroundImage14 from "../assets/background_image/pexels-隔壁光头老王-wangming'photo-354939.jpg";
 
 export const background = [
-  {
-    id: 1,
-    backgroundImage: backgroundImage,
-  },
   {
     id: 2,
     backgroundImage: backgroundImage2,
@@ -27,16 +19,8 @@ export const background = [
     backgroundImage: backgroundImage3,
   },
   {
-    id: 4,
-    backgroundImage: backgroundImage4,
-  },
-  {
     id: 5,
     backgroundImage: backgroundImage5,
-  },
-  {
-    id: 6,
-    backgroundImage: backgroundImage6,
   },
   {
     id: 7,
@@ -65,10 +49,6 @@ export const background = [
   {
     id: 13,
     backgroundImage: backgroundImage13,
-  },
-  {
-    id: 14,
-    backgroundImage: backgroundImage14,
   },
 ];
 

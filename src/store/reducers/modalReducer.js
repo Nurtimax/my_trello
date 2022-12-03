@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  key: "/static/media/pexels-daniel-absi-952670.013f36b612bcb5b1127f.jpg",
+  key: "",
   backgroundShow: "",
   isShowModal: false,
 };

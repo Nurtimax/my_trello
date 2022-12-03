@@ -1,4 +1,4 @@
-// import { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DefinedPages from "./layouts/DefinedPages";
@@ -6,17 +6,33 @@ import Home from "./pages/Home";
 import List from "./pages/List";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import { getUserDataHandler } from "./store/reducers/loginReducer";
+import {
+  addUserDataHandler,
+  putUserDataHandler,
+} from "./store/reducers/signupReducer";
 
 function App() {
   const {
-    trelloList: { cards },
+    signup: { data },
+    modal,
   } = useSelector((state) => state);
+
+  console.log(modal);
 
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch();
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(addUserDataHandler());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(putUserDataHandler(data));
+  }, [dispatch, data]);
+
+  useEffect(() => {
+    dispatch(getUserDataHandler());
+  }, [dispatch]);
 
   return (
     <BrowserRouter>
@@ -25,7 +41,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/:id" element={<DefinedPages />} />
         <Route path="/home" element={<Home />} />
-        {cards.map((card) => (
+        {data.trelloCardList.map((card) => (
           <Route
             key={card.id}
             path={`/lists/${card.title.toLowerCase()}`}

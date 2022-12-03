@@ -2,44 +2,20 @@ import React, { useReducer } from "react";
 import { TrelloCardListStyled } from "../../assets/Global";
 import { GoKebabHorizontal } from "react-icons/go";
 import TrelloCardListMenu from "./TrelloCardListMenu";
-import axios from "axios";
-import { BASE_URL } from "../../utils/constants/general";
+import { cardListReducer, initialStateCard } from "../../utils/valueReducer";
 import { useDispatch } from "react-redux";
-import { getDataHandler } from "../../store/reducers/trelloReducer";
+import { deleteCard, editCard } from "../../store/reducers/signupReducer";
 
-const initialState = {
-  showModal: false,
-  editCard: true,
-};
-
-const cardListReducer = (state, { type, payload }) => {
-  switch (type) {
-    case "MODAL":
-      return {
-        ...state,
-        showModal: !state.showModal,
-      };
-
-    case "EDIT":
-      return {
-        ...state,
-        editCard: !state.editCard,
-      };
-
-    case "TITLE":
-      return {
-        ...state,
-        title: payload,
-      };
-
-    default:
-      return state;
-  }
-};
-
-const TrelloCardList = ({ title, id, editTitle, editSlice }) => {
+const TrelloCardList = ({
+  title,
+  id,
+  editTitle,
+  editSlice,
+  trelloId,
+  pageId,
+}) => {
   const [viewEdit, dispatchViewEdit] = useReducer(cardListReducer, {
-    ...initialState,
+    ...initialStateCard,
     title,
   });
 
@@ -59,20 +35,15 @@ const TrelloCardList = ({ title, id, editTitle, editSlice }) => {
     };
   };
 
-  const saveEditCardHandler = async () => {
-    try {
-      const response = await axios.put(
-        `${BASE_URL}/card_${editTitle.toLowerCase()}_${editSlice.toLowerCase()}/${id}.json`,
-        {
-          title: viewEdit.title,
-        }
-      );
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-    dispatch(getDataHandler(editTitle, editSlice));
+  const saveCardValueHandler = () => {
+    dispatch(
+      editCard({ trelloId, pageId, cardId: id, newTitle: viewEdit.title })
+    );
     editModalHandler();
+  };
+
+  const removeCardValueHandler = () => {
+    dispatch(deleteCard({ trelloId, pageId, cardId: id }));
   };
 
   return (
@@ -91,7 +62,7 @@ const TrelloCardList = ({ title, id, editTitle, editSlice }) => {
             value={viewEdit.title}
             onChange={changeCardValueHandler("TITLE")}
           />
-          <button className="button save_button" onClick={saveEditCardHandler}>
+          <button className="button save_button" onClick={saveCardValueHandler}>
             Save
           </button>
         </>
@@ -99,10 +70,8 @@ const TrelloCardList = ({ title, id, editTitle, editSlice }) => {
 
       {viewEdit.showModal && (
         <TrelloCardListMenu
-          id={id}
+          removeCard={removeCardValueHandler}
           editCard={editModalHandler}
-          title={editTitle}
-          titleSlice={editSlice}
         />
       )}
     </TrelloCardListStyled>

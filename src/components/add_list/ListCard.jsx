@@ -6,11 +6,11 @@ const ListCard = ({ children, image }) => {
   const navigateCard = useNavigate();
 
   const navigatePathHandler = () => {
-    navigateCard(`/lists/${children.toLowerCase()}`);
+    return navigateCard(`/lists/${children.toLowerCase()}`);
   };
 
   return (
-    <ListCardStyled image={image} onClick={navigatePathHandler}>
+    <ListCardStyled image={image} bgColor={image} onClick={navigatePathHandler}>
       <h2>{children}</h2>
     </ListCardStyled>
   );
