@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import DefinedPages from "./layouts/DefinedPages";
 import Home from "./pages/Home";
 import List from "./pages/List";
@@ -35,23 +35,19 @@ function App() {
   }, [dispatch]);
 
   return (
-    <BrowserRouter>
-      <HashRouter basename="/">
-        <Routes>
-          <Route path="/" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/:id" element={<DefinedPages />} />
-          <Route path="/home" element={<Home />} />
-          {data.trelloCardList.map((card) => (
-            <Route
-              key={card.id}
-              path={`/lists/${card.title.toLowerCase()}`}
-              element={<List {...card} />}
-            />
-          ))}
-        </Routes>
-      </HashRouter>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Signup />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/:id" element={<DefinedPages />} />
+      <Route path="/home" element={<Home />} />
+      {data.trelloCardList.map((card) => (
+        <Route
+          key={card.id}
+          path={`/lists/${card.title.toLowerCase()}`}
+          element={<List {...card} />}
+        />
+      ))}
+    </Routes>
   );
 }
 
