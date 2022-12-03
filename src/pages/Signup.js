@@ -6,20 +6,21 @@ import {
 import { SiGmail } from "react-icons/si";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { SignupStyled } from "../assets/Global";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaTrello } from "react-icons/fa";
 import bgImage from "../assets/Twilight-0.7s-1680px.svg";
 import { useDispatch } from "react-redux";
 import { postUserDataHandler } from "../store/reducers/signupReducer";
 import { formReducer, initialFormState } from "../utils/valueReducer";
-
-
+import { changeStart, changeUser } from "../store/reducers/loginReducer";
 
 const Signup = () => {
   const [formState, dispatchFormState] = useReducer(
     formReducer,
     initialFormState
   );
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -33,6 +34,9 @@ const Signup = () => {
     e.preventDefault();
     dispatch(postUserDataHandler(formState));
     dispatchFormState({ type: "RESET" });
+    dispatch(changeUser(formState.name));
+    dispatch(changeStart());
+    navigate("/home");
   };
 
   return (

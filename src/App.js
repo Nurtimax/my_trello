@@ -6,33 +6,52 @@ import Home from "./pages/Home";
 import List from "./pages/List";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import { getUserDataHandler } from "./store/reducers/loginReducer";
+import {
+  changeUser,
+  getUserDataHandler,
+  getUserHandler,
+  putUserHandler,
+} from "./store/reducers/loginReducer";
 import {
   addUserDataHandler,
   putUserDataHandler,
 } from "./store/reducers/signupReducer";
 
 function App() {
-  const {
-    signup: { data },
-    modal,
-  } = useSelector((state) => state);
+  const { signup, login } = useSelector((state) => state);
 
-  console.log(modal);
+  console.log(signup);
+  console.log(login);
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(addUserDataHandler());
-  }, [dispatch]);
+  // useEffect(() => {
+  //     dispatch(changeUser(login.user));
+  // }, [dispatch, login.user]);
 
   useEffect(() => {
-    dispatch(putUserDataHandler(data));
-  }, [dispatch, data]);
+    if (login.start) {
+      dispatch(putUserHandler(login.user));
+    }
+  }, [dispatch, login.user, login.start]);
+
+ 
 
   useEffect(() => {
-    dispatch(getUserDataHandler());
-  }, [dispatch]);
+      dispatch(addUserDataHandler(login.user)); // addUserDataHandler
+  }, [dispatch, login.user]);
+
+  useEffect(() => {
+      dispatch(putUserDataHandler(signup, login.user));
+  }, [dispatch, signup, login.user]);
+
+  useEffect(() => {
+    dispatch(getUserDataHandler(login.user));
+  }, [dispatch, login.user]);
+
+  useEffect(() => {
+    dispatch(getUserHandler());
+}, [dispatch]);
 
   return (
     <HashRouter basename="/">
@@ -41,7 +60,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/:id" element={<DefinedPages />} />
         <Route path="/home" element={<Home />} />
-        {data.trelloCardList.map((card) => (
+        {signup.data.trelloCardList.map((card) => (
           <Route
             key={card.id}
             path={`/lists/${card.title.toLowerCase()}`}

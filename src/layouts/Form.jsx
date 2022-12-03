@@ -6,6 +6,8 @@ import { MdOutlineAlternateEmail, MdPassword } from "react-icons/md";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  changeStart,
+  changeUser,
   loginHandler,
   showPasswordValue,
 } from "../store/reducers/loginReducer";
@@ -43,6 +45,7 @@ const Form = () => {
         })
       );
     }
+    console.log(users,'users');
     for (let index = 0; index < users.length; index++) {
       const element = users[index];
       console.log(element);
@@ -50,9 +53,12 @@ const Form = () => {
         String(element.email) === String(formValue.email) &&
         String(element.password) === String(formValue.password)
       ) {
+        dispatch(changeUser(element.name))
+        dispatch(changeStart())
         return navigation("/home");
       }
-      return dispatch(
+      console.log('email and password false');
+       dispatch(
         loginHandler({
           title: "ERROR",
           message: "Email and password is not true",

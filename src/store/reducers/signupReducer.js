@@ -77,7 +77,7 @@ const signupReducer = createSlice({
       });
     },
     getTrelloCardListItem(state, { payload }) {
-      state.data.trelloCardList = payload.trelloCardList
+      state.data.trelloCardList = payload.trelloCardList || [];
     },
   },
 });
@@ -105,10 +105,11 @@ export const postUserDataHandler = (data) => {
 };
 
 export const addUserDataHandler = (data, id) => {
+  console.log(data, "data add user");
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `${BASE_URL}/data${"/" + id && ""}.json`,
+        `${BASE_URL}/data_${data}.json`,
         data
       );
       const result = response.data;
@@ -116,19 +117,19 @@ export const addUserDataHandler = (data, id) => {
       console.log(result);
       dispatch(getTrelloCardListItem(result));
     } catch (error) {
-      toast.error(error.message);
+      toast.error(`${error.message} addUserDataHandler`);
     }
     // dispatch(getUserDataHandler());
   };
 };
 
-export const putUserDataHandler = (data, id) => {
-  console.log(data);
+export const putUserDataHandler = (data, name) => {
+  console.log(data,'put sign');
   return async (dispatch) => {
     try {
       const response = await axios.put(
-        `${BASE_URL}/data${"/" + id && ""}.json`,
-        data
+        `${BASE_URL}/data_${name}.json`,
+        data.data
       );
       toast.success(`Succes put status ${response.status}`);
     } catch (error) {

@@ -8,6 +8,8 @@ const initialState = {
   error: {},
   passwordView: true,
   users: [],
+  user: "",
+  start: false,
 };
 
 const loginReducer = createSlice({
@@ -24,11 +26,22 @@ const loginReducer = createSlice({
     getUsers(state, { payload }) {
       state.users = payload;
     },
+    changeUser(state, { payload }) {
+      state.user = payload;
+    },
+    changeStart(state, { payload }) {
+      state.start = !state.start;
+    },
   },
 });
 
-export const { loginHandler, showPasswordValue, getUsers } =
-  loginReducer.actions;
+export const {
+  loginHandler,
+  showPasswordValue,
+  getUsers,
+  changeUser,
+  changeStart,
+} = loginReducer.actions;
 
 export default loginReducer.reducer;
 
@@ -45,6 +58,31 @@ export const getUserDataHandler = () => {
         });
       }
       dispatch(getUsers(newArr));
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+};
+
+export const getUserHandler = () => {
+  console.log('get user handler');
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/user.json`)
+      const result = response.data
+      console.log(result);
+      dispatch(changeUser(result.user))
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
+}
+
+export const putUserHandler = (user) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(`${BASE_URL}/user.json`, {user});
+      toast.success(response.status);
     } catch (error) {
       toast.error(error.message);
     }
