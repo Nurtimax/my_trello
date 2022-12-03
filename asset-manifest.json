@@ -1,28 +1,24 @@
 {
   "files": {
     "main.css": "/my_trello/static/css/main.11f0a344.css",
-    "main.js": "/my_trello/static/js/main.53f4df46.js",
+    "main.js": "/my_trello/static/js/main.9e4ffb8b.js",
     "static/media/pexels-shonejai-1227511.jpg": "/my_trello/static/media/pexels-shonejai-1227511.69581b194dbb6cee5b61.jpg",
     "static/media/pexels-felix-mittermeier-956999.jpg": "/my_trello/static/media/pexels-felix-mittermeier-956999.d9807e6a516e10c63675.jpg",
-    "static/media/pexels-daniel-absi-952670.jpg": "/my_trello/static/media/pexels-daniel-absi-952670.013f36b612bcb5b1127f.jpg",
     "static/media/pexels-steve-johnson-1269968.jpg": "/my_trello/static/media/pexels-steve-johnson-1269968.dba7e30286205b681d43.jpg",
     "static/media/pexels-pixabay-259915.jpg": "/my_trello/static/media/pexels-pixabay-259915.aad47984e6b54527c588.jpg",
     "static/media/pexels-magda-ehlers-960137.jpg": "/my_trello/static/media/pexels-magda-ehlers-960137.ae268997a2c72d78264e.jpg",
-    "static/media/pexels-隔壁光头老王-wangming'photo-354939.jpg": "/my_trello/static/media/pexels-隔壁光头老王-wangming'photo-354939.4004fe921a84c9a24dec.jpg",
     "static/media/pexels-riccardo-bertolo-4245826.jpg": "/my_trello/static/media/pexels-riccardo-bertolo-4245826.d60fa1d38151558b35e2.jpg",
     "static/media/pexels-pixabay-235985.jpg": "/my_trello/static/media/pexels-pixabay-235985.fc50740b3d469fdae429.jpg",
     "static/media/pexels-moose-photos-1037992.jpg": "/my_trello/static/media/pexels-moose-photos-1037992.c97910b8680ac0ce49c5.jpg",
-    "static/media/pexels-photomix-company-96627.jpg": "/my_trello/static/media/pexels-photomix-company-96627.e48cca87963f96f5fcae.jpg",
-    "static/media/pexels-miguel-á-padriñán-19670.jpg": "/my_trello/static/media/pexels-miguel-á-padriñán-19670.560e38e799908a8a535a.jpg",
     "static/media/pexels-pixabay-531880.jpg": "/my_trello/static/media/pexels-pixabay-531880.cc1e3bb23021cc3c0496.jpg",
     "static/media/pexels-pixabay-268533.jpg": "/my_trello/static/media/pexels-pixabay-268533.d2bc746f4f8b777df46c.jpg",
     "static/media/Twilight-0.7s-1680px.svg": "/my_trello/static/media/Twilight-0.7s-1680px.9eeccb4c670ba3da7cb1cc2f4d88f1d5.svg",
     "index.html": "/my_trello/index.html",
     "main.11f0a344.css.map": "/my_trello/static/css/main.11f0a344.css.map",
-    "main.53f4df46.js.map": "/my_trello/static/js/main.53f4df46.js.map"
+    "main.9e4ffb8b.js.map": "/my_trello/static/js/main.9e4ffb8b.js.map"
   },
   "entrypoints": [
     "static/css/main.11f0a344.css",
-    "static/js/main.53f4df46.js"
+    "static/js/main.9e4ffb8b.js"
   ]
 }
