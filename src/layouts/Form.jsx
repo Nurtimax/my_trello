@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from "react";
 import { FormStyled } from "../assets/Global";
-import { EMAIL, initState, PASSWORD } from "../utils/constants/general";
+import { EMAIL, PASSWORD } from "../utils/constants/general";
 import { initialState, valueReducer } from "../utils/valueReducer";
 import { MdOutlineAlternateEmail, MdPassword } from "react-icons/md";
 import { AiOutlineArrowRight } from "react-icons/ai";

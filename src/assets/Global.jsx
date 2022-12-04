@@ -349,6 +349,14 @@ const AddListModalFormStyled = styled.form`
     padding: 1rem;
     gap: 100%;
   }
+  & .error_input {
+    border: 1px solid red;
+    color: red;
+  }
+  & .error_message {
+    color: red;
+    line-height: 0px;
+  }
 `;
 
 const ButtonStyled = styled.button`
@@ -782,7 +790,7 @@ const TrelloCardListModalStyled = styled.div`
     height: 2rem;
     background: #0079bf;
     color: whitesmoke;
-    border: .1px solid;
+    border: 0.1px solid;
     border-radius: 3px;
   }
   & .close_button {
@@ -807,7 +815,7 @@ const TrelloCardListModalStyled = styled.div`
     width: 12rem;
     height: 2rem;
     font-size: 1rem;
-    border: .1px solid #ccc;
+    border: 0.1px solid #ccc;
     border-radius: 2px;
     color: #52607a;
   }
@@ -820,7 +828,6 @@ const TrelloCardListModalStyled = styled.div`
     border: none;
   }
   & .close_modal {
-
     display: flex;
     justify-content: flex-end;
     justify-self: flex-end;

@@ -10,6 +10,7 @@ const initialState = {
   users: [],
   user: "",
   start: false,
+  createListValid: null,
 };
 
 const loginReducer = createSlice({
@@ -32,6 +33,9 @@ const loginReducer = createSlice({
     changeStart(state, { payload }) {
       state.start = !state.start;
     },
+    createValid(state, { payload }) {
+      state.createListValid = payload;
+    },
   },
 });
 
@@ -41,6 +45,7 @@ export const {
   getUsers,
   changeUser,
   changeStart,
+  createValid
 } = loginReducer.actions;
 
 export default loginReducer.reducer;
@@ -68,20 +73,20 @@ export const getUserHandler = () => {
   // console.log('get user handler');
   return async (dispatch) => {
     try {
-      const response = await axios.get(`${BASE_URL}/user.json`)
-      const result = response.data
+      const response = await axios.get(`${BASE_URL}/user.json`);
+      const result = response.data;
       // console.log(result);
-      dispatch(changeUser(result.user))
+      dispatch(changeUser(result.user));
     } catch (error) {
-      toast.error(error.message)
+      toast.error(error.message);
     }
-  }
-}
+  };
+};
 
 export const putUserHandler = (user) => {
   return async (dispatch) => {
     try {
-      const response = await axios.put(`${BASE_URL}/user.json`, {user});
+      const response = await axios.put(`${BASE_URL}/user.json`, { user });
       toast.success(response.status);
     } catch (error) {
       toast.error(error.message);

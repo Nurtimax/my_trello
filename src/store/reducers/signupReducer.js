@@ -93,7 +93,7 @@ export const {
   deleteCard,
   editCard,
   getTrelloCardListItem,
-  clearTrelloCardList
+  clearTrelloCardList,
 } = signupReducer.actions;
 export default signupReducer.reducer;
 
@@ -109,23 +109,19 @@ export const postUserDataHandler = (data) => {
 };
 
 export const addUserDataHandler = (data, id) => {
-  console.log(data, "data add user");
   return async (dispatch) => {
     try {
       const response = await axios.get(`${BASE_URL}/data_${data}.json`, data);
       const result = response.data;
       toast.success(`Succes put status ${response.status}`);
-      // console.log(result);
       dispatch(getTrelloCardListItem(result));
     } catch (error) {
       toast.error(`${error.message} addUserDataHandler`);
     }
-    // dispatch(getUserDataHandler());
   };
 };
 
 export const putUserDataHandler = (data, name) => {
-  // console.log(data,'put sign');
   return async (dispatch) => {
     try {
       const response = await axios.put(
@@ -136,6 +132,5 @@ export const putUserDataHandler = (data, name) => {
     } catch (error) {
       toast.error(error.message);
     }
-    // dispatch(getUserDataHandler());
   };
 };
