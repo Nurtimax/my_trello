@@ -109,6 +109,7 @@ const TrelloCard = ({ title = "Todo", children, id, cards, trelloId }) => {
             editSlice={children}
             trelloId={trelloId}
             pageId={id}
+            listName={children}
           />
         ))}
         {!isShowModal.modal ? (

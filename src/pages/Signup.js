@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import {
   MdOutlineAccountCircle,
   MdOutlineArrowForwardIos,
@@ -10,7 +10,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaTrello } from "react-icons/fa";
 import bgImage from "../assets/Twilight-0.7s-1680px.svg";
 import { useDispatch } from "react-redux";
-import { postUserDataHandler } from "../store/reducers/signupReducer";
+import {
+  clearTrelloCardList,
+  postUserDataHandler,
+} from "../store/reducers/signupReducer";
 import { formReducer, initialFormState } from "../utils/valueReducer";
 import { changeStart, changeUser } from "../store/reducers/loginReducer";
 
@@ -29,6 +32,11 @@ const Signup = () => {
       dispatchFormState({ type: key, payload: e.target.value });
     };
   };
+
+  useEffect(() => {
+    dispatch(changeUser(""));
+    dispatch(clearTrelloCardList());
+  }, [dispatch]);
 
   const submitHandler = (e) => {
     e.preventDefault();

@@ -3,8 +3,10 @@ import { TrelloCardListStyled } from "../../assets/Global";
 import { GoKebabHorizontal } from "react-icons/go";
 import TrelloCardListMenu from "./TrelloCardListMenu";
 import { cardListReducer, initialStateCard } from "../../utils/valueReducer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteCard, editCard } from "../../store/reducers/signupReducer";
+import TrelloCardListModal from "./TrelloCardListModal";
+import { toggleDescriptionModal } from "../../store/reducers/modalReducer";
 
 const TrelloCardList = ({
   title,
@@ -13,6 +15,7 @@ const TrelloCardList = ({
   editSlice,
   trelloId,
   pageId,
+  listName
 }) => {
   const [viewEdit, dispatchViewEdit] = useReducer(cardListReducer, {
     ...initialStateCard,
@@ -20,6 +23,8 @@ const TrelloCardList = ({
   });
 
   const dispatch = useDispatch();
+
+  const { descriptionModal } = useSelector((state) => state.modal);
 
   const showModalHandler = () => {
     dispatchViewEdit({ type: "MODAL" });
@@ -48,10 +53,16 @@ const TrelloCardList = ({
 
   return (
     <TrelloCardListStyled>
+      {descriptionModal && <TrelloCardListModal title={title} listName={listName} />}
       {viewEdit.editCard ? (
         <>
-          <div>{title}</div>
-          <button className="button" onClick={showModalHandler}>
+          <div
+            className="card_title"
+            onClick={() => dispatch(toggleDescriptionModal())}
+          >
+            {title}
+          </div>
+          <button className="button menu_button" onClick={showModalHandler}>
             <GoKebabHorizontal />
           </button>
         </>

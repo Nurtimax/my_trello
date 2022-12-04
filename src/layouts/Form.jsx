@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { FormStyled } from "../assets/Global";
 import { EMAIL, initState, PASSWORD } from "../utils/constants/general";
 import { initialState, valueReducer } from "../utils/valueReducer";
@@ -12,6 +12,7 @@ import {
   showPasswordValue,
 } from "../store/reducers/loginReducer";
 import { useNavigate } from "react-router-dom";
+import { clearTrelloCardList } from "../store/reducers/signupReducer";
 
 const EMAIL_REGEX = /.+@.+\.[A-Za-z]+$/;
 const PASSWORD_REGEX =
@@ -31,6 +32,11 @@ const Form = () => {
       dispatchValue({ type, payload: e.target.value });
     };
   };
+
+  useEffect(() => {
+    dispatch(changeUser(''))
+    dispatch(clearTrelloCardList())
+  },[dispatch])
 
   const submitHandler = (e) => {
     e.preventDefault();

@@ -460,7 +460,7 @@ const TrelloCardStyled = styled.div`
 const TrelloCardListStyled = styled.div`
   & {
     width: 100%;
-    padding: 0.5rem 0;
+    padding: 0.2rem;
     background: #e8efed;
     display: flex;
     align-items: flex-start;
@@ -484,6 +484,14 @@ const TrelloCardListStyled = styled.div`
   & .save_button {
     width: 20%;
   }
+  & .card_title {
+    width: 90%;
+    /* height: 1.5rem; */
+    padding: 0.5rem;
+  }
+  & .menu_button {
+    align-self: center;
+  }
 `;
 
 const TrelloCardListMenuStyled = styled.div`
@@ -499,6 +507,7 @@ const TrelloCardListMenuStyled = styled.div`
     gap: 3px;
     padding: 2px;
     border-radius: 2px;
+    z-index: 10;
   }
   & .button {
     width: 100%;
@@ -533,7 +542,7 @@ const ListCardStyled = styled.div`
     background: #f5f5f5;
     border-radius: 5px;
     padding: 0.5rem;
-    background: ${({bgColor}) => bgColor};
+    background: ${({ bgColor }) => bgColor};
     background-image: url(${({ image }) => image});
     background-repeat: no-repeat;
     background-size: cover;
@@ -690,6 +699,134 @@ const SignupStyled = styled.div`
   }
 `;
 
+const TrelloCardListModalStyled = styled.div`
+  & {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  & .backdrop {
+    width: 100%;
+    height: 100vh;
+    background: #00000050;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  & .dispaly_modal {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  & .modal {
+    width: 50%;
+    height: 55%;
+    background: whitesmoke;
+    position: absolute;
+    border-radius: 5px;
+    padding: 0.5rem;
+    color: #52607a;
+  }
+  & .about_card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  & .icon {
+    font-size: 2rem;
+  }
+  & .title {
+    font-size: 1.4rem;
+    font-weight: 550;
+    line-height: 1.7rem;
+    color: #182b4d;
+  }
+  & .in_list {
+    font-size: 15px;
+  }
+  & .item_list {
+    text-decoration: underline;
+    letter-spacing: 0.5px;
+  }
+  & .description {
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+  }
+  & #textarea {
+    width: 100%;
+    height: 60%;
+    resize: none;
+    outline: none;
+    padding: 0.5rem;
+  }
+  & ::placeholder {
+    font-size: 1rem;
+  }
+  & .description_add {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  & .buttons button:first-child {
+    width: 10rem;
+    height: 2rem;
+    background: #0079bf;
+    color: whitesmoke;
+    border: .1px solid;
+    border-radius: 3px;
+  }
+  & .close_button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  & .buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  & .events_button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  & .formatting button {
+    width: 12rem;
+    height: 2rem;
+    font-size: 1rem;
+    border: .1px solid #ccc;
+    border-radius: 2px;
+    color: #52607a;
+  }
+  & .close_modal button {
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    background: none;
+    border: none;
+  }
+  & .close_modal {
+
+    display: flex;
+    justify-content: flex-end;
+    justify-self: flex-end;
+  }
+`;
+
 export {
   Container,
   LoginStyled,
@@ -709,4 +846,5 @@ export {
   ListCardStyled,
   ListsCardStyled,
   SignupStyled,
+  TrelloCardListModalStyled,
 };

@@ -25,33 +25,44 @@ function App() {
 
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //     dispatch(changeUser(login.user));
-  // }, [dispatch, login.user]);
+  useEffect(() => {
+    console.log("change user");
+    dispatch(changeUser(""));
+  }, [dispatch]);
 
   useEffect(() => {
-    if (login.start) {
-      dispatch(putUserHandler(login.user));
-    }
+    console.log("put user ");
+    dispatch(putUserHandler(login.user));
   }, [dispatch, login.user, login.start]);
 
- 
+  useEffect(() => {
+    console.log("get user");
+    dispatch(getUserHandler());
+  }, [dispatch]);
 
   useEffect(() => {
-      dispatch(addUserDataHandler(login.user)); // addUserDataHandler
-  }, [dispatch, login.user]);
-
-  useEffect(() => {
+    console.log("put user data");
+    if (login.user) {
       dispatch(putUserDataHandler(signup, login.user));
+    }
+    return
   }, [dispatch, signup, login.user]);
 
   useEffect(() => {
-    dispatch(getUserDataHandler(login.user));
+    if (login.user) {
+      console.log(login.user, "is true add user");
+      dispatch(addUserDataHandler(login.user)); // addUserDataHandler
+    }
+    return
   }, [dispatch, login.user]);
 
   useEffect(() => {
-    dispatch(getUserHandler());
-}, [dispatch]);
+    console.log("get user data ");
+    if (login.user) {
+      dispatch(getUserDataHandler(login.user));
+    }
+    return
+  }, [dispatch, login.user]);
 
   return (
     <HashRouter basename="/">

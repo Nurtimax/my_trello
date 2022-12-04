@@ -4,6 +4,7 @@ const initialState = {
   key: "",
   backgroundShow: "",
   isShowModal: false,
+  descriptionModal: false,
 };
 
 const modalReducer = createSlice({
@@ -20,9 +21,12 @@ const modalReducer = createSlice({
     showModal(state, { payload }) {
       state.isShowModal = !state.isShowModal;
     },
+    toggleDescriptionModal(state, { payload }) {
+      state.descriptionModal = !state.descriptionModal;
+    },
   },
 });
 
-export const { chooseImage, chooseColor, showModal } = modalReducer.actions;
+export const { chooseImage, chooseColor, showModal, toggleDescriptionModal } = modalReducer.actions;
 
 export default modalReducer.reducer;
