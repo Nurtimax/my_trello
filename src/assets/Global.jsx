@@ -1051,6 +1051,26 @@ const SearchStyled = styled.div`
   }
 `;
 
+const DefinedPagesStyled = styled.div`
+   & {
+    width: 80%;
+    height: 80vh;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+   }
+   & .not_defined {
+    font-size: 3rem;
+    color: #fafafa;
+   }
+   & .not_defined span {
+    color: red;
+    border-bottom: 1px solid;
+   }
+`
+
 export {
   Container,
   LoginStyled,
@@ -1073,4 +1093,5 @@ export {
   TrelloCardListModalStyled,
   HeaderStyled,
   SearchStyled,
+  DefinedPagesStyled
 };

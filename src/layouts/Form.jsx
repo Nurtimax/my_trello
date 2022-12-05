@@ -52,10 +52,8 @@ const Form = () => {
         })
       );
     }
-    console.log(users,'users');
     for (let index = 0; index < users.length; index++) {
       const element = users[index];
-      console.log(element);
       if (
         String(element.email) === String(formValue.email) &&
         String(element.password) === String(formValue.password)
@@ -64,7 +62,6 @@ const Form = () => {
         dispatch(changeStart())
         return navigation("/home");
       }
-      console.log('email and password false');
        dispatch(
         loginHandler({
           title: "ERROR",
@@ -75,7 +72,6 @@ const Form = () => {
   };
 
   const showPasswordHandler = () => {
-    console.log("show password is working");
     dispatch(showPasswordValue());
   };
 
