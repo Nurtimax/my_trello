@@ -44,6 +44,7 @@ const Form = () => {
       !EMAIL_REGEX.test(formValue.email) &&
       !PASSWORD_REGEX.test(formValue.password)
     ) {
+      alert('not true')
       return dispatch(
         loginHandler({
           title: "ERROR",

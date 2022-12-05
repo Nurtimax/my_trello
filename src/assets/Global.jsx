@@ -834,6 +834,223 @@ const TrelloCardListModalStyled = styled.div`
   }
 `;
 
+const HeaderStyled = styled.div`
+  * {
+    box-sizing: border-box;
+  }
+  & .active {
+    color: #055c92;
+  }
+  & a {
+    color: #0e171d;
+  }
+  body {
+    margin: 0;
+    background: #fafafa;
+    color: #262626;
+  }
+  & .sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 300px;
+    height: 100%;
+    padding: 40px 10px 30px 10px;
+    background: #ffffff;
+    border-right: 1px solid #dbdbdb;
+    transition: 0.3s;
+    z-index: 20;
+  }
+  & .sidebar-header {
+    width: 100%;
+    margin-bottom: 44px;
+    text-align: center;
+  }
+  & .sidebar-header svg {
+    font-size: 50px;
+    color: #055c92;
+  }
+  & .logo-icon {
+    display: none;
+    font-size: 28px;
+    height: 35px;
+    width: 51px;
+    text-align: center;
+  }
+  & .logo-img {
+    margin-left: 14px;
+    height: 32px;
+  }
+  & .sidebar button {
+    height: 60px;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    font-family: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+  & .sidebar button span {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 48px;
+    padding: 0 12px;
+    border-radius: 24px;
+    line-height: 1;
+  }
+  & .sidebar button:hover span {
+    background: #f2f2f2;
+  }
+  & .sidebar button:hover span :is(svg, img) {
+    scale: 1.05;
+  }
+  & .sidebar button span span {
+    transition: 0.3s;
+  }
+  & .sidebar button {
+    position: relative;
+    font-size: 28px;
+    transition: 0.2s;
+  }
+  & .sidebar button img {
+    width: 28px;
+    height: 28px;
+    transition: 0.2s;
+  }
+  & .sidebar button svg span {
+    display: grid;
+    place-items: center;
+    height: 20px;
+    padding: 0 4px;
+    border-radius: 10px;
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    border: 1px solid #ffffff;
+    background: #ff2f40;
+    color: #f9f9f9;
+    font-size: 12px;
+    font-style: normal;
+  }
+  & .sidebar button i em {
+    display: block;
+    height: 10px;
+    width: 10px;
+    border-radius: 10px;
+    position: absolute;
+    top: 2px;
+    right: -1px;
+    border: 1px solid #fff;
+    background: #ff2f40;
+    color: #f9f9f9;
+    font-size: 12px;
+    font-style: normal;
+  }
+  & .sidebar button span {
+    font-size: 17px;
+  }
+  & .sidebar button span svg {
+    font-size: 1.7rem;
+    color: #055c92;
+  }
+  & .sidebar nav {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  & .sidebar nav button:last-child {
+    margin-top: auto;
+  }
+  @media (width < 580px) {
+    .logo-img {
+      display: none;
+    }
+    .logo-icon {
+      display: block;
+    }
+    .sidebar {
+      width: 72px;
+    }
+    .sidebar button span {
+      width: 50px;
+    }
+    .sidebar button span span {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+`;
+
+const SearchStyled = styled.div`
+  & {
+    width: 90%;
+    background: #fafafa;
+    height: 100vh;
+    overflow: auto;
+  }
+  & .search_item {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  & .search_item form {
+    width: 90%;
+    padding: 1rem;
+  }
+  & .search_item form label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  & .search_item form label svg {
+    font-size: 2rem;
+  } 
+  & .search_item form label input {
+    width: 70%;
+    height: 2.5rem;
+    border: none;
+    background: none;
+    border-bottom: 1px solid;
+    outline: none;
+    font-size: 1rem;
+    padding: .5rem;
+  }
+  & .user_list {
+    width: 90%;
+    /* margin: 0 auto; */
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    place-items: center;
+    gap: 12px;
+    padding: 1rem;
+  }
+  & .user_list_item {
+    width: 90%;
+    height: 10rem;
+    background: #f5f5f5;
+    border: .1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: #00000051 0 1px 2px;
+  }
+  & .item_header {
+    height: 30%;
+    border-radius: inherit;
+    padding: 1rem;
+    background: #dddbdb;
+  }
+  & .item_article {
+    padding: 1rem;
+  }
+`;
+
 export {
   Container,
   LoginStyled,
@@ -854,4 +1071,6 @@ export {
   ListsCardStyled,
   SignupStyled,
   TrelloCardListModalStyled,
+  HeaderStyled,
+  SearchStyled,
 };
