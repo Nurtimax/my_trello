@@ -227,9 +227,9 @@ const ErrorModalStyled = styled.div`
 
 const AddListStyled = styled.div`
   & {
-    width: 20%;
+    width: 20rem;
     padding: 0.2rem;
-    margin: 1rem;
+    margin: 1rem 0;
     background: #9fa3a6;
     display: flex;
     align-items: center;
@@ -544,8 +544,8 @@ const ListStyled = styled.div`
 
 const ListCardStyled = styled.div`
   & {
-    width: 25%;
-    height: 10rem;
+    width: 30rem;
+    height: 15rem;
     background: #f5f5f5;
     border-radius: 5px;
     padding: 0.5rem;
