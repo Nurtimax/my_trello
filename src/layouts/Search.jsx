@@ -8,7 +8,6 @@ const Search = () => {
   const [searchItem, setSearchItem] = useState("");
 
   const { users } = useSelector((state) => state.login);
-  console.log(users);
 
   const changeSearchItemHandler = (e) => {
     setSearchItem(e.target.value);

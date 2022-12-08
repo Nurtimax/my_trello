@@ -53,7 +53,7 @@ const Header = () => {
           ) : (
             <>
               <NavLink to="/login">
-                <button>
+                <button onClick={() => setShowProfile(false)}>
                   <span>
                     <CgProfile />
                     <span>Sign in</span>
@@ -61,7 +61,7 @@ const Header = () => {
                 </button>
               </NavLink>
               <NavLink to="/">
-                <button>
+                <button onClick={() => setShowProfile(false)}>
                   <span>
                     <CgProfile />
                     <span>Sign up</span>

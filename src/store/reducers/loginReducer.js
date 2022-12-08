@@ -70,12 +70,10 @@ export const getUserDataHandler = () => {
 };
 
 export const getUserHandler = () => {
-  // console.log('get user handler');
   return async (dispatch) => {
     try {
       const response = await axios.get(`${BASE_URL}/user.json`);
       const result = response.data;
-      // console.log(result);
       dispatch(changeUser(result.user));
     } catch (error) {
       toast.error(error.message);

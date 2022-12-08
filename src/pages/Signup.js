@@ -15,7 +15,7 @@ import {
   postUserDataHandler,
 } from "../store/reducers/signupReducer";
 import { formReducer, initialFormState } from "../utils/valueReducer";
-import { changeStart, changeUser } from "../store/reducers/loginReducer";
+import { changeUser } from "../store/reducers/loginReducer";
 
 const Signup = () => {
   const [formState, dispatchFormState] = useReducer(
@@ -43,7 +43,6 @@ const Signup = () => {
     dispatch(postUserDataHandler(formState));
     dispatchFormState({ type: "RESET" });
     dispatch(changeUser(formState.name));
-    dispatch(changeStart());
     navigate("/home");
   };
 

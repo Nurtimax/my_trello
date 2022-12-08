@@ -22,38 +22,31 @@ import {
 function App() {
   const { signup, login } = useSelector((state) => state);
 
-  console.log(signup);
-  console.log(login);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("change user");
     dispatch(changeUser(""));
   }, [dispatch]);
 
   useEffect(() => {
-    console.log("put user ");
     dispatch(putUserHandler(login.user));
   }, [dispatch, login.user, login.start]);
 
   useEffect(() => {
-    console.log("get user");
     dispatch(getUserHandler());
   }, [dispatch]);
 
   useEffect(() => {
-    console.log("put user data");
     if (login.user) {
-      dispatch(putUserDataHandler(signup, login.user)); //getUserDataHandler
+      dispatch(putUserDataHandler(signup, login.user)); 
     }
     return;
   }, [dispatch, signup, login.user]);
 
   useEffect(() => {
     if (login.user) {
-      console.log(login.user, "is true add user");
-      dispatch(addUserDataHandler(login.user)); // addUserDataHandler
+      dispatch(addUserDataHandler(login.user)); 
     }
     return;
   }, [dispatch, login.user]);
