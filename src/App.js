@@ -45,7 +45,7 @@ function App() {
   useEffect(() => {
     console.log("put user data");
     if (login.user) {
-      dispatch(putUserDataHandler(signup, login.user));
+      dispatch(putUserDataHandler(signup, login.user)); //getUserDataHandler
     }
     return;
   }, [dispatch, signup, login.user]);
@@ -59,11 +59,7 @@ function App() {
   }, [dispatch, login.user]);
 
   useEffect(() => {
-    console.log("get user data ");
-    if (login.user) {
-      dispatch(getUserDataHandler(login.user));
-    }
-    return;
+    dispatch(getUserDataHandler(login.user));
   }, [dispatch, login.user]);
 
   return (

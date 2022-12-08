@@ -6,7 +6,6 @@ import { MdOutlineAlternateEmail, MdPassword } from "react-icons/md";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  changeStart,
   changeUser,
   loginHandler,
   showPasswordValue,
@@ -34,9 +33,9 @@ const Form = () => {
   };
 
   useEffect(() => {
-    dispatch(changeUser(''))
-    dispatch(clearTrelloCardList())
-  },[dispatch])
+    dispatch(changeUser(""));
+    dispatch(clearTrelloCardList());
+  }, [dispatch]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -44,7 +43,7 @@ const Form = () => {
       !EMAIL_REGEX.test(formValue.email) &&
       !PASSWORD_REGEX.test(formValue.password)
     ) {
-      alert('not true')
+      alert("not true");
       return dispatch(
         loginHandler({
           title: "ERROR",
@@ -58,11 +57,10 @@ const Form = () => {
         String(element.email) === String(formValue.email) &&
         String(element.password) === String(formValue.password)
       ) {
-        dispatch(changeUser(element.name))
-        dispatch(changeStart())
+        dispatch(changeUser(element.name));
         return navigation("/home");
       }
-       dispatch(
+      dispatch(
         loginHandler({
           title: "ERROR",
           message: "Email and password is not true",

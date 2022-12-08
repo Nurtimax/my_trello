@@ -387,7 +387,6 @@ const TrelloCardStyled = styled.div`
   & {
     width: 25%;
     padding: 0.7rem;
-    /* margin: 2rem 0; */
     background: #f5f5f5;
     border-radius: 3px;
     position: relative;
@@ -538,7 +537,7 @@ const ListStyled = styled.div`
     display: flex;
     gap: 5rem;
     flex-wrap: wrap;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: flex-start;
   }
 `;
@@ -849,6 +848,9 @@ const HeaderStyled = styled.div`
     background: #fafafa;
     color: #262626;
   }
+  & .profile {
+    position: relative;
+  }
   & .sidebar {
     position: fixed;
     top: 0;
@@ -856,13 +858,20 @@ const HeaderStyled = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 300px;
+    width: 70px;
     height: 100%;
     padding: 40px 10px 30px 10px;
     background: #ffffff;
     border-right: 1px solid #dbdbdb;
-    transition: 0.3s;
+    transition: 0.4s;
     z-index: 20;
+  }
+  & .sidebar:hover {
+    width: 300px;
+  }
+  & .sidebar:hover nav button:last-child {
+    margin-left: 0;
+    transition: 1.6s;
   }
   & .sidebar-header {
     width: 100%;
@@ -892,6 +901,7 @@ const HeaderStyled = styled.div`
     font-family: inherit;
     color: inherit;
     cursor: pointer;
+    position: relative;
   }
   & .sidebar button span {
     display: flex;
@@ -965,6 +975,8 @@ const HeaderStyled = styled.div`
   }
   & .sidebar nav button:last-child {
     margin-top: auto;
+    margin-left: auto;
+    transition: 1.4s;
   }
   @media (width < 580px) {
     .logo-img {
@@ -1011,7 +1023,7 @@ const SearchStyled = styled.div`
   }
   & .search_item form label svg {
     font-size: 2rem;
-  } 
+  }
   & .search_item form label input {
     width: 70%;
     height: 2.5rem;
@@ -1020,14 +1032,14 @@ const SearchStyled = styled.div`
     border-bottom: 1px solid;
     outline: none;
     font-size: 1rem;
-    padding: .5rem;
+    padding: 0.5rem;
   }
   & .user_list {
     width: 90%;
     /* margin: 0 auto; */
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     place-items: center;
     gap: 12px;
     padding: 1rem;
@@ -1036,7 +1048,7 @@ const SearchStyled = styled.div`
     width: 90%;
     height: 10rem;
     background: #f5f5f5;
-    border: .1px solid #ccc;
+    border: 0.1px solid #ccc;
     border-radius: 5px;
     box-shadow: #00000051 0 1px 2px;
   }
@@ -1052,7 +1064,7 @@ const SearchStyled = styled.div`
 `;
 
 const DefinedPagesStyled = styled.div`
-   & {
+  & {
     width: 80%;
     height: 80vh;
     position: fixed;
@@ -1060,18 +1072,32 @@ const DefinedPagesStyled = styled.div`
     align-items: center;
     justify-content: center;
     text-align: center;
-   }
-   & .not_defined {
+  }
+  & .not_defined {
     font-size: 3rem;
     color: #fafafa;
-   }
-   & .not_defined span {
+  }
+  & .not_defined span {
     color: red;
     border-bottom: 1px solid;
-   }
-`
+  }
+`;
+
+const ProfileModalStyled = styled.div`
+  & {
+    position: absolute;
+    background: cornflowerblue;
+    z-index: 20;
+    top: 80%;
+    border-radius: 5px;
+  }
+  & button:hover {
+    background: inherit;
+  }
+`;
 
 export {
+  ProfileModalStyled,
   Container,
   LoginStyled,
   FormStyled,
@@ -1093,5 +1119,5 @@ export {
   TrelloCardListModalStyled,
   HeaderStyled,
   SearchStyled,
-  DefinedPagesStyled
+  DefinedPagesStyled,
 };

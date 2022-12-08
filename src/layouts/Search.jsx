@@ -41,6 +41,7 @@ const Search = () => {
             <header className="item_header">{item.name}</header>
             <article className="item_article">
                 <div>Email: {item.email}</div>
+                {/* <div>Password: {item.password}</div> */}
             </article>
           </li>
         ))}
