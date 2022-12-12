@@ -265,6 +265,7 @@ const AddListModaltyled = styled.div`
     box-shadow: #00000039 0 1px 2px;
     display: flex;
     flex-direction: column;
+    z-index: 100;
   }
   & .list_modal_header {
     color: rgb(25 25 25 / 70%);
@@ -315,6 +316,15 @@ const AddListModaltyled = styled.div`
     gap: 0.2rem;
     padding: 0.2rem;
     margin: 0 auto;
+  }
+  & .choose_background {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #d2cbcb;
   }
 `;
 
@@ -544,8 +554,8 @@ const ListStyled = styled.div`
 
 const ListCardStyled = styled.div`
   & {
-    width: 30rem;
-    height: 15rem;
+    /* width: 30rem; */
+    /* height: 15rem; */
     background: #f5f5f5;
     border-radius: 5px;
     padding: 0.5rem;
@@ -554,7 +564,25 @@ const ListCardStyled = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     color: rgb(255 255 255 / 90%);
+    position: relative;
   }
+  & .content {
+    width: 29rem;
+    height: 15rem;
+  }
+  & .edit_input {
+    width: 300px;
+    height: 40px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    color: whitesmoke;
+    font-size: 25px;
+    background: none;
+    padding: 0 5px;
+    outline: none;
+    font-weight: 900;
+  }
+  
 `;
 
 const ListsCardStyled = styled.div`
@@ -562,6 +590,33 @@ const ListsCardStyled = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
+    position: relative;
+  }
+  & .header {
+    font-size: 20px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 50px;
+    width: 31rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    transition: 0.3s;
+  }
+  & .header:hover {
+    background: #1118206b;
+    border-radius: inherit;
+  }
+  & .header .button {
+    width: 100px;
+    height: 30px;
+    display: none;
+  }
+  & .header:hover .button {
+    width: 100px;
+    height: 30px;
+    display: block;
   }
 `;
 
@@ -1000,7 +1055,7 @@ const HeaderStyled = styled.div`
 
 const SearchStyled = styled.div`
   & {
-    width: 90%;
+    width: 100%;
     background: #fafafa;
     height: 100vh;
     overflow: auto;
@@ -1086,17 +1141,68 @@ const DefinedPagesStyled = styled.div`
 const ProfileModalStyled = styled.div`
   & {
     position: absolute;
-    background: cornflowerblue;
+    background: #bfc0c2;
     z-index: 20;
-    top: 80%;
+    top: 50%;
+    right: 100%;
     border-radius: 5px;
+    display: grid;
+    width: 150px;
+    animation: profile 0.2s linear 1;
+    transform-origin: right top;
   }
   & button:hover {
     background: inherit;
   }
+  @keyframes profile {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+`;
+
+const ProfileStyled = styled.div`
+  & {
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    background: #d2d0d0;
+    padding: 1rem;
+  }
+  & .profile_card {
+    width: 95%;
+    height: 50vh;
+    background: #fafafa;
+    box-shadow: #00000045 0px 1px 1px 1.5px;
+    border-radius: 5px;
+    padding: 1rem;
+  }
+  & .profile_header {
+    height: 70px;
+    background: #edecec;
+    border-radius: inherit;
+  }
+  & .profile_image {
+    padding: 1rem 0;
+  }
+  & .profile_image figure {
+    width: 300px;
+    height: 300px;
+    background-color: #eae7e7;
+    border-radius: 3px;
+  }
+  & .user_data {
+    display: grid;
+    gap: 12px;
+    padding: 1rem 0;
+  }
 `;
 
 export {
+  ProfileStyled,
   ProfileModalStyled,
   Container,
   LoginStyled,

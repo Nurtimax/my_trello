@@ -36,17 +36,28 @@ const AddListModal = () => {
     );
   };
 
+
   return (
     <AddListModaltyled>
       <div className="list_modal_header">Add list</div>
       <figure className="default_img">
-        {backgroundShow ? (
-          <BackgroundColorChoose
-            className="background_img"
-            backgroundShow={backgroundShow}
-          ></BackgroundColorChoose>
+        {key ? (
+          <>
+            {backgroundShow ? (
+              <BackgroundColorChoose
+                className="background_img"
+                backgroundShow={backgroundShow}
+              ></BackgroundColorChoose>
+            ) : (
+              <>
+                <img src={key} alt="bg" />
+              </>
+            )}
+          </>
         ) : (
-          <img src={key || backgroundShow} alt="bg" />
+          <>
+            <div className="choose_background">Choose background</div>
+          </>
         )}
       </figure>
       <figure className="background_styled">

@@ -6,6 +6,14 @@ import { ProfileModalStyled } from "../../assets/Global";
 const ProfileModal = () => {
   return (
     <ProfileModalStyled>
+      <NavLink to="/profile">
+        <button>
+          <span>
+            <CgProfile />
+            <span>Profile</span>
+          </span>
+        </button>
+      </NavLink>
       <NavLink to="/login">
         <button>
           <span>

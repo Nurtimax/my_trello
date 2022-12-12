@@ -16,6 +16,19 @@ const signupReducer = createSlice({
     addTrelloCardList(state, { payload }) {
       state.data.trelloCardList.push(payload);
     },
+    removeTrelloCardList(state, { payload }) {
+      state.data.trelloCardList = state.data.trelloCardList.filter(
+        (card) => card.id !== payload
+      );
+    },
+    editTrelloCardList(state, { payload }) {
+      state.data.trelloCardList.map((card) => {
+        if (card.id === payload.id) {
+          card.title = payload.newTitle;
+        }
+        return card
+      });
+    },
     addList(state, { payload }) {
       state.data.trelloCardList.map((cardList) => {
         if (payload.trelloId === cardList.id) {
@@ -94,6 +107,8 @@ export const {
   editCard,
   getTrelloCardListItem,
   clearTrelloCardList,
+  removeTrelloCardList,
+  editTrelloCardList
 } = signupReducer.actions;
 export default signupReducer.reducer;
 
@@ -116,7 +131,7 @@ export const addUserDataHandler = (data, id) => {
       toast.success(`Succes put status ${response.status}`);
       dispatch(getTrelloCardListItem(result));
     } catch (error) {
-      toast.error(`${error.message} addUserDataHandler`);
+      // toast.error(`${error.message} addUserDataHandler`);
     }
   };
 };

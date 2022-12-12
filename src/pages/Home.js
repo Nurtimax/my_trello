@@ -17,6 +17,7 @@ const Home = () => {
             <ListCard
               key={item.id || Math.random()}
               image={item.backgroundImage}
+              id={item.id}
             >
               {item.title}
             </ListCard>

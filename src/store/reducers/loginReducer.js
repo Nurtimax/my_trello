@@ -11,6 +11,7 @@ const initialState = {
   user: "",
   start: false,
   createListValid: null,
+  profileImage: ''
 };
 
 const loginReducer = createSlice({

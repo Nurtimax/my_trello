@@ -7,6 +7,7 @@ import Search from "./layouts/Search";
 import Home from "./pages/Home";
 import List from "./pages/List";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import {
   changeUser,
@@ -21,6 +22,7 @@ import {
 
 function App() {
   const { signup, login } = useSelector((state) => state);
+  console.log(login);
 
 
   const dispatch = useDispatch();
@@ -62,6 +64,7 @@ function App() {
         <Route path="/" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/:id" element={<DefinedPages />} />
         <Route path="/home" element={<Home />} />
         {signup.data.trelloCardList.map((card) => (
