@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ListCardStyled } from "../../assets/Global";
 import { removeTrelloCardList } from "../../store/reducers/signupReducer";
