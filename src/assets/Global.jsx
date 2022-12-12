@@ -598,7 +598,7 @@ const ListsCardStyled = styled.div`
     left: 0;
     top: 0;
     height: 50px;
-    width: 31rem;
+    width: 30rem;
     display: flex;
     align-items: center;
     justify-content: flex-end;
