@@ -22,7 +22,6 @@ import {
 
 function App() {
   const { signup, login } = useSelector((state) => state);
-  console.log(login);
 
 
   const dispatch = useDispatch();
