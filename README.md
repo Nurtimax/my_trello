@@ -1,72 +1,59 @@
-#My [deploy](https://nurtimax.github.io/my_trello/)
+# Trello-like App
 
-# Getting Started with Create React App
+This project is a Trello-like web application built using JavaScript and React. It aims to replicate some functionalities of Trello, allowing users to manage tasks and organize them into boards and lists.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
 
-## Available Scripts
+- **Board Management:** Create, update, and delete boards.
+- **List Creation:** Organize tasks within various lists under a board.
+- **Task Management:** Add, update, and delete tasks within lists.
+- **Drag and Drop Functionality:** Implement drag-and-drop features for easy task reordering.
 
-In the project directory, you can run:
+## Technologies and Skills
 
-### `npm start`
+The following technologies and skills are required or beneficial for this project:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **JavaScript:** Essential for front-end development.
+- **React:** Utilizing React library for building user interfaces.
+- **React Router DOM:** For managing routing within the application.
+- **Background Image Integration:** Incorporating background images for aesthetic appeal and user experience enhancement.
+- **HTML & CSS:** Basic knowledge for structuring and styling the app.
+- **State Management:** Understanding state management in React for managing app data.
+- **API Integration:** Connecting with backend services or creating a mock API for storing board, list, and task data.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Setup Instructions
 
-### `npm test`
+To set up the project locally, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository from GitHub.
+2. Install dependencies using `npm install`.
+3. Run the development server using `npm start`.
+4. Access the application in your web browser at `http://localhost:3000`.
 
-### `npm run build`
+## Development Roadmap
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Phase 1: Basic Implementation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Set up React project structure.
+- Implement basic board and list components.
+- Create mock data for tasks.
+- Enable basic task management functionalities.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Phase 2: Routing and Drag-and-Drop
 
-### `npm run eject`
+- Integrate React Router DOM for navigation between boards and lists.
+- Implement drag-and-drop functionalities for task reordering.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Phase 3: Styling and User Experience
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Incorporate background images and enhance UI/UX design.
+- Ensure responsiveness for various screen sizes.
+- Fine-tune user interactions and animations.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Contribution
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+If you'd like to contribute to this project, please fork the repository, create a new branch, make your changes, and open a pull request. 
 
-## Learn More
+Feel free to reach out for any questions or suggestions regarding the project.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Happy coding!
